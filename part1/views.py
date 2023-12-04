@@ -5,6 +5,7 @@ from .models import Todo
 from .serializers import TodoSerializer
 
 # ListAPIView
+
 class TodoListView(generics.ListAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
@@ -12,6 +13,7 @@ class TodoListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
 # CreateAPIView
+
 class TodoCreateView(generics.CreateAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
@@ -19,6 +21,7 @@ class TodoCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
 
 # UpdateAPIView
+
 class TodoUpdateView(generics.UpdateAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
@@ -26,6 +29,7 @@ class TodoUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
 
 # RetrieveAPIView
+
 class TodoRetrieveView(generics.RetrieveAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
@@ -33,9 +37,9 @@ class TodoRetrieveView(generics.RetrieveAPIView):
     permission_classes = [IsAuthenticated]
 
 # DestroyAPIView
+
 class TodoDestroyView(generics.DestroyAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
-
