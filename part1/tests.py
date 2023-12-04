@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 from .models import Todo
 
+
 class TodoAPITestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='datta', password='datta123')
