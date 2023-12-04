@@ -17,7 +17,7 @@ class TodoAPITestCase(TestCase):
             'title': 'Test Task',
             'description': 'Description',
             'status': 'OPEN',
-            'tags': ['tag1','tag2' ] # Adjusted tags format
+            'tags': ['tag1', 'tag2']  # Adjusted tags format
         }
 
         response = self.client.post('/api/create/', data, format='json')
@@ -28,7 +28,7 @@ class TodoAPITestCase(TestCase):
         self.assertEqual(created_todo['title'], 'Test Task')
         self.assertEqual(created_todo['description'], 'Description')
         self.assertEqual(created_todo['status'], 'OPEN')
-        self.assertEqual(created_todo['tags'], ['tag1','tag2'])  # Updated expected format
+        self.assertEqual(created_todo['tags'], ['tag1', 'tag2'])  # Updated expected format
 
     def test_list_all_todos(self):
         response = self.client.get('/api/list/')
@@ -65,7 +65,7 @@ class TodoAPITestCase(TestCase):
             'title': 'Updated Task',
             'description': 'Updated Description',
             'status': 'DONE',
-            'tags': ['updated_tag1','updated_tag2' ] # Adjusted tags format
+            'tags': ['updated_tag1', 'updated_tag2']  # Adjusted tags format
         }
 
         update_url = reverse('todo-update', kwargs={'pk': todo.id})
