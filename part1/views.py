@@ -38,3 +38,4 @@ class TodoDestroyView(generics.DestroyAPIView):
     serializer_class = TodoSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
+
