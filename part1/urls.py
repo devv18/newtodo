@@ -1,6 +1,10 @@
 # todo_app/urls.py
 from django.urls import path
-from .views import TodoCreateView, TodoListView, TodoUpdateView, TodoRetrieveView, TodoDestroyView
+from .views import (
+    TodoCreateView, TodoListView,
+    TodoUpdateView, TodoRetrieveView, TodoDestroyView
+)
+
 
 urlpatterns = [
     # List and Create operations
