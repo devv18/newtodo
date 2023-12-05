@@ -24,16 +24,16 @@ class Migration(migrations.Migration):
                     ('title', models.CharField(max_length=100)),
                     ('description', models.CharField(max_length=1000)),
                     ('due_date', models.DateField(blank=True, null=True)),
-                ('status', models.CharField(
-                    choices=[
-                        ('OPEN', 'Open'),
-                        ('WORKING', 'Working'),
-                        ('DONE', 'Done'),
-                        ('OVERDUE', 'Overdue')
-                    ],
-                    default='OPEN',
-                    max_length=10
-                )),
+                    ('status', models.CharField(
+                        choices=[
+                            ('OPEN', 'Open'),
+                            ('WORKING', 'Working'),
+                            ('DONE', 'Done'),
+                            ('OVERDUE', 'Overdue')
+                        ],
+                        default='OPEN',
+                        max_length=10
+                    )),
                     ('tags', models.CharField(
                         blank=True,
                         max_length=200,
