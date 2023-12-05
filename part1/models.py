@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Todo(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
@@ -13,9 +14,16 @@ class Todo(models.Model):
         ('DONE', 'Done'),
         ('OVERDUE', 'Overdue'),
     ]
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='OPEN')
-    # Add a CharField to store comma-separated tags
-    tags = models.CharField(max_length=255, blank=True, help_text='Enter tags separated by commas')
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='OPEN'
+    )
+    tags = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text='Enter tags separated by commas'
+    )
 
     def get_tags(self):
         if self.tags:
