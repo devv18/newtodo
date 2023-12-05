@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='todo',
             name='tags',
-            field=models.CharField(blank=True, help_text='Enter tags separated by commas', max_length=255),
+            tags = models.CharField(
+                blank=True,
+                help_text='Enter tags separated by commas',
+                max_length=255
+            ),
         ),
     ]
