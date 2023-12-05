@@ -52,17 +52,27 @@ class TodoAPITestCase(TestCase):
             self.assertIn('tags', todo)
 
     def test_retrieve_todo(self):
-        todo = Todo.objects.create(title='Test Task', description='Description', status='OPEN', tags='tag1,tag2')
-        response = self.client.get(reverse('todo-retrieve', kwargs={'pk': todo.id}))
+        todo = Todo.objects.create(
+            title='Test Task',
+            description='Description',
+            status='OPEN',
+            tags='tag1,tag2'
+        )
+        response = self.client.get(
+                reverse('todo-retrieve', kwargs={'pk': todo.id})
+        )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         retrieved_todo = response.data
         self.assertEqual(retrieved_todo['title'], 'Test Task')
         self.assertEqual(retrieved_todo['description'], 'Description')
         self.assertEqual(retrieved_todo['status'], 'OPEN')
-        self.assertEqual(''.join(retrieved_todo['tags']), 'tag1,tag2')  # Compare with a string
+        self.assertEqual(
+                ''.join(retrieved_todo['tags']),
+                'tag1,tag2'
+        )
 
     def test_update_todo(self):
-        todo = Todo.objects.create(title='Test Task', description='Description', status='OPEN', tags='tag1,tag2')
+        todo = Todo.objects.create(title='Test Task', description='Description', status='OPEN', tags='tag1,tag2')1
         updated_data = {
             'title': 'Updated Task',
             'description': 'Updated Description',
@@ -76,12 +86,21 @@ class TodoAPITestCase(TestCase):
         self.assertEqual(updated_todo['title'], 'Updated Task')
         self.assertEqual(updated_todo['description'], 'Updated Description')
         self.assertEqual(updated_todo['status'], 'DONE')
-        self.assertEqual(updated_todo['tags'], ['updated_tag1', 'updated_tag2'])  # Updated expected format
+        self.assertEqual(
+                updated_todo['tags'],
+                ['updated_tag1', 'updated_tag2']
+        )
 
     def test_destroy_todo(self):
-        todo = Todo.objects.create(title='Test Task', description='Description', status='OPEN', tags='tag1,tag2')
-
-        response = self.client.delete(reverse('todo-destroy', kwargs={'pk': todo.id}))
+        todo = Todo.objects.create(
+            title='Test Task',
+            description='Description',
+            status='OPEN',
+            tags='tag1,tag2'
+        )
+        response = self.client.delete(
+            reverse('todo-destroy', kwargs={'pk': todo.id})
+        )
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertFalse(Todo.objects.filter(id=todo.id).exists())
