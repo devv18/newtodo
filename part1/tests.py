@@ -9,7 +9,9 @@ from .models import Todo
 
 class TodoAPITestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='datta', password='datta123')
+        self.user = User.objects.create_user(
+            username='datta', password='datta123'
+        )
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
