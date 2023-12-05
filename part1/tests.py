@@ -31,9 +31,11 @@ class TodoAPITestCase(TestCase):
         self.assertEqual(created_todo['title'], 'Test Task')
         self.assertEqual(created_todo['description'], 'Description')
         self.assertEqual(created_todo['status'], 'OPEN')
-        self.assertEqual(created_todo['tags'],
-                         ['tag1', 'tag2']
-                        )  
+        self.assertEqual(
+                created_todo['tags'],
+                ['tag1', 'tag2']
+        )
+
 
     def test_list_all_todos(self):
         response = self.client.get('/api/list/')
