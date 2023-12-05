@@ -1,12 +1,23 @@
 from rest_framework import serializers
 from .models import Todo
 
+
+
 class TodoSerializer(serializers.ModelSerializer):
     tags = serializers.ListField(child=serializers.CharField(), required=False)
 
     class Meta:
         model = Todo
-        fields = ['id', 'timestamp', 'title', 'description', 'due_date', 'status', 'tags']
+        fields = [
+                    'id',
+                    'timestamp',
+                    'title',
+                    'description',
+                    'due_date',
+                    'status',
+                    'tags',
+                ]
+
         read_only_fields = ['timestamp']
 
     def create(self, validated_data):
