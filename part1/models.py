@@ -1,13 +1,11 @@
 from django.db import models
 
 
-
 class Todo(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
     due_date = models.DateField(null=True, blank=True)
-
     STATUS_CHOICES = [
         ('OPEN', 'Open'),
         ('WORKING', 'Working'),
