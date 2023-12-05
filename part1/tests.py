@@ -72,7 +72,12 @@ class TodoAPITestCase(TestCase):
         )
 
     def test_update_todo(self):
-        todo = Todo.objects.create(title='Test Task', description='Description', status='OPEN', tags='tag1,tag2')1
+        todo = Todo.objects.create(
+            title='Test Task',
+            description='Description',
+            status='OPEN',
+            tags='tag1,tag2'
+        )
         updated_data = {
             'title': 'Updated Task',
             'description': 'Updated Description',
