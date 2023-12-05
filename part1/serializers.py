@@ -24,13 +24,14 @@ class TodoSerializer(serializers.ModelSerializer):
         todo = Todo.objects.create(**validated_data, tags=tags_data)
         return todo
 
-    def update(self, instance, validated_data):
-        tags_data = validated_data.pop('tags', [])
-        instance.title = validated_data.get('title', instance.title)
-        instance.description = validated_data.get('description',
-                                                 instance.description)
-        instance.due_date = validated_data.get('due_date', instance.due_date)
-        instance.status = validated_data.get('status', instance.status)
-        instance.tags = tags_data
-        instance.save()
-        return instance
+   def update(self, instance, validated_data):
+    tags_data = validated_data.pop('tags', [])
+    instance.title = validated_data.get('title', instance.title)
+    instance.description, instance.due_date, instance.status = (
+        validated_data.get('description', instance.description),
+        validated_data.get('due_date', instance.due_date),
+        validated_data.get('status', instance.status),
+    )
+    instance.tags = tags_data
+    instance.save()
+    return instance
