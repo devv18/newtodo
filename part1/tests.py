@@ -36,7 +36,6 @@ class TodoAPITestCase(TestCase):
                 ['tag1', 'tag2']
         )
 
-
     def test_list_all_todos(self):
         response = self.client.get('/api/list/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -54,12 +53,9 @@ class TodoAPITestCase(TestCase):
 
     def test_retrieve_todo(self):
         todo = Todo.objects.create(title='Test Task', description='Description', status='OPEN', tags='tag1,tag2')
-
         response = self.client.get(reverse('todo-retrieve', kwargs={'pk': todo.id}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
         retrieved_todo = response.data
-
         self.assertEqual(retrieved_todo['title'], 'Test Task')
         self.assertEqual(retrieved_todo['description'], 'Description')
         self.assertEqual(retrieved_todo['status'], 'OPEN')
@@ -67,20 +63,16 @@ class TodoAPITestCase(TestCase):
 
     def test_update_todo(self):
         todo = Todo.objects.create(title='Test Task', description='Description', status='OPEN', tags='tag1,tag2')
-
         updated_data = {
             'title': 'Updated Task',
             'description': 'Updated Description',
             'status': 'DONE',
             'tags': ['updated_tag1', 'updated_tag2']  # Adjusted tags format
         }
-
         update_url = reverse('todo-update', kwargs={'pk': todo.id})
         response = self.client.put(update_url, updated_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
         updated_todo = response.data
-
         self.assertEqual(updated_todo['title'], 'Updated Task')
         self.assertEqual(updated_todo['description'], 'Updated Description')
         self.assertEqual(updated_todo['status'], 'DONE')
