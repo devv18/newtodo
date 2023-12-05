@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Todo
 
 
-
 class TodoSerializer(serializers.ModelSerializer):
     tags = serializers.ListField(child=serializers.CharField(), required=False)
 
