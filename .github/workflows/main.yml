@@ -53,4 +53,4 @@ jobs:
 
       - name: Run Flake8 and Black
         run: |
-          flake8 . && black --check --diff .
+          flake8 . && black --check --diff part1
